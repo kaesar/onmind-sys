@@ -1,13 +1,24 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface Component {
-    slug: string;
     title: string;
-    description: string;
+    description?: string;
     type: string;
-    repo: string;
+    slug: string;
+    repo?: string;
+    pipe?: string;
+    tags?: string[];
 }
   
 export interface CardProps extends Component {}
   
 export interface CardGridProps {
     components: Component[];
+    defaultTags?: string[];
+}
+
+export interface CardFilterProps {
+    onFilterChange: Dispatch<SetStateAction<{ title: string; tags: string[] }>>;
+    availableTags: string[];
+    defaultTags?: string[];
 }
